@@ -50,7 +50,6 @@ const SignupForm = ({ navigation }) => {
     const onSignup = async (email, password, username) => {
         await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
             const user = userCredential.user;
-            console.log(user)
             setDoc(doc(db, "users", user.email), {
                 owner_uid: user.uid,
                 username: username,
@@ -66,7 +65,6 @@ const SignupForm = ({ navigation }) => {
         <View style={styles.wrapper}>
             <Formik
                 initialValues={{ username: '', email: '', password: '' }} onSubmit={(values) => {
-                    console.log(values)
                     onSignup(values.email, values.password, values.username);
                 }}
                 validationSchema={SignupFormSchema}

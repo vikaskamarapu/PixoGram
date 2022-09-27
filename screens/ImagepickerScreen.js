@@ -77,11 +77,9 @@ const ImagepickerScreen = ({ navigation }) => {
             quality: 1,
         });
 
-        console.log(result);
 
         if (!result.cancelled) {
             setImage(result.uri);
-            console.log(result.uri)
         }
     };
     const openCamera = async () => {

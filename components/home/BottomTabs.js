@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 
 
 const BottomTabs = ({ currentUser }) => {
-    console.log(currentUser)
     const [activeTab, setActiveTab] = useState('Home')
 
     const icons = [

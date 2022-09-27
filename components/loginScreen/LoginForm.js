@@ -49,7 +49,6 @@ const LoginForm = ({ navigation }) => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user)
             })
             .catch((error) => {
                 console.log(error.message)
@@ -78,7 +77,6 @@ const LoginForm = ({ navigation }) => {
                                 autoCapitalize='none'
                                 keyboardType='email-address'
                                 textContentType='emailAddress'
-                                autoFocus={true}
                                 style={{ color: 'white' }}
                                 onChangeText={handleChange('email')}
                                 onBlur={handleBlur('email')}

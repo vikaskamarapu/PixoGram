@@ -43,7 +43,6 @@ export default function Stories() {
     useEffect(() => {
         getUsers();
     }, [])
-    console.log(users)
     return (
         <View style={{ marginTop: 16, }}>
             <ScrollView

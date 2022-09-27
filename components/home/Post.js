@@ -105,8 +105,6 @@ const PostHeader = ({ post }) => {
 
 const PostImage = ({ post, handleLike }) => {
     const win = Dimensions.get('window');
-    console.log(win)
-
     return (
         <TouchableOpacity onPress={() => handleLike(post)} activeOpacity={1} >
             <View style={{
