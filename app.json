@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "InstaCGram",
+    "slug": "InstaCGram", 
+    "owner":"vikaskamarapu5555",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/instagram.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/insta-splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/instagram (1).png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/instagram (2).png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ]
+  }
+}
