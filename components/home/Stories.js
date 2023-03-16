@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         height: 70,
         borderRadius: 50,
         borderWidth: 3,
-        borderColor:'black',
+        borderColor: 'black',
     },
 })
 
@@ -63,6 +63,7 @@ export default function Stories() {
                     </View>
                 ))}
             </ScrollView>
+            <Divider width={1} orientation='vertical' style={{ marginVertical: 10 }} />
         </View>
     )
 }

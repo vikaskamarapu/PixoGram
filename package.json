@@ -24,7 +24,8 @@
     "react-native": "0.69.5",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "^2.6.1",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "expo-image-manipulator": "~10.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

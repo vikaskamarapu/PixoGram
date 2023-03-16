@@ -17,15 +17,15 @@ const styles = StyleSheet.create({
     }
 })
 
-const SignupScreen = ({navigation}) => {
-  return (
-      <View style={styles.container}>
-          <View style={styles.logoContainer}>
-              <Image source={logo} style={{ height: 80, width: 80 }} />
-          </View>
-          <SignupForm navigation={navigation}/>
-      </View>
-  )
+const SignupScreen = ({ navigation }) => {
+    return (
+        <View style={styles.container}>
+            <View style={styles.logoContainer}>
+                <Image source={logo} style={{ height: 80, width: 80 }} />
+            </View>
+            <SignupForm navigation={navigation} />
+        </View>
+    )
 }
 
 export default SignupScreen

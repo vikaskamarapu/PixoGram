@@ -7,6 +7,8 @@ import { Switch } from "react-native";
 import { collection, query, where, getDocs, limit, setDoc, Timestamp, doc } from "firebase/firestore";
 import { db, auth, storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { manipulateAsync, SaveFormat } from 'expo-image-manipulator';
+
 
 const AddNewPost = ({ navigation, image }) => (
   <View style={styles.container}>
@@ -85,14 +87,24 @@ const FormikPostUploader = ({ image, navigation }) => {
 
   console.log(currentLogInUser)
 
+  const compressImage = async (uri, format = SaveFormat.JPEG) => { // SaveFormat.PNG
+    const result = await manipulateAsync(
+      uri,
+      [],
+      { compress: 0.5, format }
+    );
+
+    return { name: `${Date.now()}.${format}`, type: `image/${format}`, ...result };
+    // return: { name, type, width, height, uri }
+  };
+
   return (
     <Formik
       initialValues={{ caption: "" }}
       onSubmit={async (values) => {
-        const ext = image.split('.').pop();
-        let filename = values.caption.split(' ')[0] + Date.now() + '.' + ext;
-        const storageRef = ref(storage, "posts/" + filename);
-        const res = await fetch(image);
+        const photo = compressImage(image);
+        const storageRef = ref(storage, "posts/" + (await photo).name);
+        const res = await fetch((await photo).uri);
         const blob = await res.blob();
         await uploadBytes(storageRef, blob).then((snapshot) => {
           console.log("Image Uploaded....");
@@ -256,7 +268,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-between",  
   },
   headerText: {
     color: "white",
