@@ -31,7 +31,8 @@ export default function HomeScreen({ navigation }) {
       doc.forEach((doc) => {
         received.push(doc.data());
       });
-      setCurrentUser(received)
+      setCurrentUser(received);
+      setEndOfPage(false);
     });
   }, []);
 
