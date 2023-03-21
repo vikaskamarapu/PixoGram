@@ -32,7 +32,6 @@ export default function HomeScreen({ navigation }) {
         received.push(doc.data());
       });
       setCurrentUser(received);
-      setEndOfPage(false);
     });
   }, []);
 
@@ -42,6 +41,7 @@ export default function HomeScreen({ navigation }) {
       getCountFromServer(q).then((value) => {
         setPostsCount(value.data().count);
       });
+      setEndOfPage(false);
       onSnapshot(query(collectionGroup(db, "posts"), orderBy('createdAt', 'desc'), limit(2)), (doc) => {
         const received = [];
         setLastDoc(doc.docs[doc.docs.length - 1]);
@@ -53,16 +53,19 @@ export default function HomeScreen({ navigation }) {
       });
     }
     else {
-      if (posts.length < postsCount) {
-        onSnapshot(query(collectionGroup(db, "posts"), orderBy('createdAt', 'desc'), startAfter(lastDoc), limit(2)), (doc) => {
-          const received = [];
-          setLastDoc(doc.docs[doc.docs.length - 1]);
-          doc.forEach((doc) => {
-            received.push({ id: doc.id, ...doc.data() });
-          });
-          setPosts([...posts, ...received])
-          console.log(received);
+      setEndOfPage(false);
+      onSnapshot(query(collectionGroup(db, "posts"), orderBy('createdAt', 'desc'), startAfter(lastDoc), limit(2)), (doc) => {
+        const received = [];
+        setLastDoc(doc.docs[doc.docs.length - 1]);
+        doc.forEach((doc) => {
+          received.push({ id: doc.id, ...doc.data() });
         });
+        setPosts([...posts, ...received])
+        console.log(received);
+      });
+
+      if (posts.length >= postsCount) {
+        setEndOfPage(true);
       }
     }
   }, [page]);
@@ -77,7 +80,7 @@ export default function HomeScreen({ navigation }) {
   )
 
   function isCloseToBottom({ layoutMeasurement, contentOffset, contentSize }) {
-    return layoutMeasurement.height + contentOffset.y >= contentSize.height - 20;
+    return layoutMeasurement.height + contentOffset.y >= contentSize.height-20;
   }
 
   function isCloseToTop({ layoutMeasurement, contentOffset, contentSize }) {
