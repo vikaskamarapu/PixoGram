@@ -13,13 +13,17 @@
       "backgroundColor": "#000000"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/f15a30e8-0b4a-4f56-a55e-9ce9fed00807"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -29,7 +33,8 @@
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.vikaskamarapu5555.InstaCGram"
+      "package": "com.vikaskamarapu5555.InstaCGram",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "favicon": "./assets/instagram (2).png"
