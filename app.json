@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "InstaCGram",
-    "slug": "InstaCGram", 
-    "owner":"vikaskamarapu5555",
+    "slug": "InstaCGram",
+    "owner": "vikaskamarapu5555",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/instagram.png",
@@ -25,7 +25,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/instagram (1).png",
         "backgroundColor": "#000000"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.vikaskamarapu5555.InstaCGram"
     },
     "web": {
       "favicon": "./assets/instagram (2).png"
@@ -37,6 +41,11 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f15a30e8-0b4a-4f56-a55e-9ce9fed00807"
+      }
+    }
   }
 }
